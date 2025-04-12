@@ -1,0 +1,25 @@
+#Default
+#.gitignore
+test.cpp
+.vscode
+*.out
+*.o
+*.so
+*.a
+.vscode/
+a.out
+
+# Libraries
+*.lib
+*.a
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+.vscode/
+.DS_Store
