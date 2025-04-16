@@ -33,7 +33,7 @@ int a, double b;
   - Information that can be moved, process or stored by a computer.
 - What is a value?
   - A value is a letter, number, text or instance of some other useful concept that can be represent as data.
-- What is obect?
+- What is object?
   - It is a region of storage (usually memory) that can store a value.
 - What is a variable?
   - Obect that has a name.
@@ -55,7 +55,18 @@ int c ( 6 );   // direct-initialization (initial value in parenthesis)
 int d { 7 };   // direct-list-initialization (initial value in braces)
 int e {};      // value-initialization (empty braces)
 ```
-> You may see the above forms written with different spacing (e.g. int b=5; int c(6);, int d{7};, int e{};). Whether you use extra spaces for readability or not is a matter of personal preference.
+> You may see the above forms written with different spacing (e.g. int b=5; int c(6);, int d{7};, int e{};\). Whether you use extra spaces for readability or not is a matter of personal preference.
+
+1. Copy-initialization (using the equals sign `=`)
+   - `int a = 5` this is the traditional way to initialize variables in many programming languages.
+   - Cannot be used for objects without copy constructors.
+2. Direct-initialization
+   - `int c (7)` - Can call explicit constructors.
+   - Can be ambiguous with function declarations
+3. Direct-list-initialization
+   - `int e {9}` - Prevents narrowing conversions (safer).
+   - Works uniformly across all types (hence "uniform initialization").
+   - Preferred in modern C++ code.
 
 ## 1.3 iostream: cout, cin, and endl
 
@@ -87,7 +98,7 @@ int main()
 - Using `std::endl` is oftern inefficient, as it actually does two jobs:
   - It outputs a newline (moving the cursor to the next line of the console)
   - It flushes the buffer (which is slow).
-- If we output multiple lines of text ending with `std::endl`, we will get multiple flushes, which is slow and probably unnedcessary.
+- If we output multiple lines of text ending with `std::endl`, we will get multiple flushes, which is slow and probably unnecessary.
 - When outputting text to the console, we typically don’t need to explicitly flush the buffer ourselves. C++’s output system is designed to self-flush periodically, and it’s both simpler and more efficient to let it flush itself.
 
 ```C++
@@ -104,6 +115,7 @@ int main()
 ```
 
 > Prefer `\n` over `std:endl` when outputting text to the console
+> Think of it like this: \n just adds content to the buffer without forcing any action, while std::endl adds content AND forces immediate action.
 
 ### `std::cin`
 
