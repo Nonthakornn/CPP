@@ -35,3 +35,32 @@
   - **EXIT**
     - The program quits and the contacts are lost forever.
   - **Any other input is ignored.**
+
+## Note
+
+### Initialization List and Constructor Body Assignment
+
+- Initialization
+  - The member variable is initialized directly when the object is created.
+  - It's more efficient because the variable is only initialized once.
+  - For objects, it calls their constructors directly with the provided values.
+
+```C++
+//Initialization
+PhoneBook::PhoneBook() : contactCount(0) {
+    // Constructor body - might be empty or have additional code
+}
+```
+
+- Constructor Body Assignment
+  - The member variable is first default-initialized.
+  - Then it's assigned a new value in the constructor body.
+  - This means two operations: initialization + assignment.
+  - Garbage value, then set it to 0
+
+```C++
+//Contructor Body Assignment
+PhoneBook::PhoneBook() {
+    contactCount = 0;  // Assignment, not initialization
+}
+```
