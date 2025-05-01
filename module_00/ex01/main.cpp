@@ -17,9 +17,12 @@ int main() {
 		if (option.empty())
 			continue;
 		else if (option == "ADD")
-			std::cout << "Adding..." << std::endl;
+			phone_book.add_contact();
 		else if (option == "SEARCH")
-			std::cout << "Searching..." << std::endl;
+		{
+			phone_book.display_all_contact();
+			phone_book.display_specific_contact();
+		}
 		else if (option == "EXIT")
 			break;
 		else
