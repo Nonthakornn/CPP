@@ -3,9 +3,9 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
-HEADERS = Contact.hpp phoneBook.hpp
+HEADERS = Contact.hpp PhoneBook.hpp
 BUILD_DIR = build
-SRC_FILES = main.cpp Contact.cpp phoneBook.cpp
+SRC_FILES = main.cpp Contact.cpp PhoneBook.cpp
 OBJ_FILES = $(SRC_FILES:%.cpp= $(BUILD_DIR)/%.o)
 
 all:			$(NAME)
