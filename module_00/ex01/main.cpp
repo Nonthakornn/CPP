@@ -21,7 +21,8 @@ int main() {
 		else if (option == "SEARCH")
 		{
 			phone_book.display_all_contact();
-			phone_book.display_specific_contact();
+			// phone_book.display_specific_contact();
+			std::cout << "Searching" << std::endl;
 		}
 		else if (option == "EXIT")
 			break;

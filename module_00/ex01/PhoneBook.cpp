@@ -1,7 +1,7 @@
 #include "PhoneBook.hpp"
 
 /* Best Practice (Initialization list) */
-PhoneBook::PhoneBook() : m_contact_size(0) {};
+PhoneBook::PhoneBook() : m_contact_size(0) {}
 
 static std::string trim_space(std::string &info)
 {
@@ -47,14 +47,24 @@ void PhoneBook::add_contact() {
 
 	assign_info("Enter your Fisname: ", fname);
 	assign_info("Enter your Lastname: ", lname);
+	assign_info("Enter your Nickname: ", nickname);
 	assign_info("Enter your Phone number: ", phonenumber);
 	assign_info("Enter your Secret: ", secret);
 
-	this->m_contact_list[m_contact_size] = contact_info;
+	contact_info.set_fname(fname);
+	contact_info.set_lname(lname);
+	contact_info.set_nickname(nickname);
+	contact_info.set_phonenumber(phonenumber);
+	contact_info.set_secret(secret);
+
+	this->m_contact_list[this->m_contact_size % 8] = contact_info;
 	this->m_contact_size++;
-	//!Delete
-	std::cout << m_contact_size<< std::endl;
 }
 
-// void	PhoneBook::display_all_contact() const {};
+void	PhoneBook::display_all_contact() const {
+	Contact contact_info;
+	std::cout << contact_info.get_fname() << std::endl;
+
+}
+
 // void	PhoneBook::display_specific_contact() const {};
