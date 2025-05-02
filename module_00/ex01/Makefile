@@ -1,6 +1,6 @@
 NAME = phonebook 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 RM = rm -rf
 
 HEADERS = Contact.hpp PhoneBook.hpp
