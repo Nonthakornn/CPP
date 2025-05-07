@@ -1,11 +1,11 @@
-NAME = globalbank
+NAME = logdata
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 RM = rm -rf
 
-HEADERS = 
+HEADERS = Account.hpp
 BUILD_DIR = build
-SRC_FILES = main.cpp
+SRC_FILES = test.cpp
 OBJ_FILES = $(SRC_FILES:%.cpp= $(BUILD_DIR)/%.o)
 
 all:			$(NAME)
