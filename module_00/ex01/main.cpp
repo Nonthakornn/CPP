@@ -20,8 +20,9 @@ int main() {
 			phone_book.add_contact();
 		else if (option == "SEARCH")
 		{
-			phone_book.display_all_contact();
-			// phone_book.display_specific_contact();
+			if (!phone_book.display_all_contact())
+				continue;
+			phone_book.display_specific_contact();
 		}
 		else if (option == "EXIT")
 			break;

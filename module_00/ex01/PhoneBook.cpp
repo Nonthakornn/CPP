@@ -61,13 +61,13 @@ void PhoneBook::add_contact() {
 	this->m_contact_size++;
 }
 
-void	PhoneBook::display_all_contact() const {
+int	PhoneBook::display_all_contact() const {
 	int contact_size = 0;
 
 	if (m_contact_size == 0)
 	{
 		std::cout << "There is no contact in the list!" << std::endl;
-		return ;
+		return (0);
 	}
 	if (m_contact_size > 8)
 		contact_size = 8;
@@ -98,9 +98,44 @@ void	PhoneBook::display_all_contact() const {
 		else
 			std::cout << std::setw(10) << m_contact_list[i].get_nickname() << "|" << std::endl;
 	}
+	return (1);
 }
 
-void	PhoneBook::display_specific_contact() const {};
+/*
+Read the index with std::cin >> idx
+This leaves the newline character in the input buffer
+When main loop reads the next command, it gets this leftover newline
+This causes "Input your option>" to prompt 2 times 
+The std::cin.ignore() call clears the input buffer by ignore number up to the next newline character.
+*/
+
+void	PhoneBook::display_specific_contact() const {
+	int idx = 0;
+
+	std::cout << "Input index: ";
+	if (!(std::cin >> idx)) {
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cout << "Invalid input! Please enter a number." << std::endl;
+		return ;
+    }
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	if (idx < 1 || idx > 8 || idx > m_contact_size)
+	{
+		std::cout << "Out of range!" << std::endl;
+		return ;
+	}
+	std::cout << "First name: " ;
+	std::cout << m_contact_list[idx - 1].get_fname() << std::endl;
+	std::cout << "Last name: " ;
+	std::cout << m_contact_list[idx - 1].get_lname() << std::endl;
+	std::cout << "Nick name: " ;
+	std::cout << m_contact_list[idx - 1].get_nickname() << std::endl;
+	std::cout << "Phone number: " ;
+	std::cout << m_contact_list[idx - 1].get_phonenumber() << std::endl;
+	std::cout << "Secret: " ;
+	std::cout << m_contact_list[idx - 1].get_secret() << std::endl;
+}
 
 /*
 void	PhoneBook::display_all_contact() const {
@@ -146,4 +181,3 @@ void	PhoneBook::display_all_contact() const {
     }
 }
 */
-
