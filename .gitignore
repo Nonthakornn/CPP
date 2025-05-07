@@ -1,5 +1,6 @@
 #Default
 #.gitignore
+.vscode
 test.cpp
 *.out
 *.o
