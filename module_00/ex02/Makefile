@@ -1,11 +1,11 @@
 NAME = logdata
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 HEADERS = Account.hpp
 BUILD_DIR = build
-SRC_FILES = test.cpp
+SRC_FILES = tests.cpp Account.cpp
 OBJ_FILES = $(SRC_FILES:%.cpp= $(BUILD_DIR)/%.o)
 
 all:			$(NAME)
