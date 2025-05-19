@@ -65,4 +65,61 @@ int main()
 
 > A member function returning a reference should return a reference of the same type as the data member being returned, to avoid unnecessary conversions.
 
+## Constructor
+
+- Constructor perform initialization of any member variables
+- Constructor may perform other setup function such as
+  - error checking
+  - Memory allocation
+  - Initialization of state
+- After the constrcutor finished execting we say that the object has been "constructed" and the object should now be in a conssitent, unable state.
+
+### Naming Constructors
+
+- Constructor have specific rules for how they must be named:
+  - Constructor must have the same name as the class (with the same capitalization)
+  - Constructors have no return type (not even `void`)
+- Constructors should now be const.
+
+```CPP
+Person(int age) {
+    if (age < 0 || age > 150) {
+        throw std::invalid_argument("Wrong age");
+    }
+    this->age = age;
+}
+```
+
+### Member initializer list format
+
+```CPP
+Foo(int x, int y) : m_x { x }, m_y { y }
+{
+}
+
+Foo(int x, int y) :
+    m_x { x },
+    m_y { y }
+{
+}
+
+Foo(int x, int y)
+    : m_x { x }
+    , m_y { y }
+{
+}
+```
+
+> Best practice is to put the colon on the lone after the constructor name,
+> Indent your member initializer list to make it easier to see the function names.
+
+```CPP
+Foo(int x, int y)
+    : m_x { x }
+    , m_y { y }
+{
+}
+```
+
+
 ### Encapsulation
