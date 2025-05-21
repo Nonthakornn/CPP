@@ -73,6 +73,7 @@ int main()
   - Memory allocation
   - Initialization of state
 - After the constrcutor finished execting we say that the object has been "constructed" and the object should now be in a conssitent, unable state.
+- Constructor allow to call other function, including other member function
 
 ### Naming Constructors
 
@@ -91,6 +92,23 @@ Person(int age) {
 ```
 
 ### Member initializer list format
+
+- You cannot initialize static member variables in a constructor's initializer list because static members don't belong to any specific instance of the class.
+- Static members exist before any objects are created, and they continue to exist even if no objects exist. They need to be initialized only once, not each time an object is constructed.
+- Static variables with local scope: These are also automatically initialized to zero.
+
+```CPP
+class Account {
+private:
+	static int _nbAccounts;
+};
+
+Account::Account(int initial_deposit)
+    : _nbAccounts(0)  // Error! Can't initialize static member in initializer list
+{
+    // ...
+}
+```
 
 ```CPP
 Foo(int x, int y) : m_x { x }, m_y { y }
