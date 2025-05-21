@@ -11,6 +11,7 @@
 #pragma once
 #ifndef __ACCOUNT_H__
 # include <iostream>
+# include <ctime>
 #define __ACCOUNT_H__
 
 // ************************************************************************** //
