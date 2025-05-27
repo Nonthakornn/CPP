@@ -143,3 +143,7 @@ int main()
 
 > Each line of input data in the input buffer is terminated by `'\n` character.
 
+| Function    | Stops at newline? | Removes newline from buffer? | Reads spaces? |
+| ----------- | ----------------- | ---------------------------- | ------------- |
+| `get()`     | Yes               | ❌ No                         | ✅ Yes         |
+| `getline()` | Yes               | ✅ Yes                        | ✅ Yes         |
