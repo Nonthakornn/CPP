@@ -139,5 +139,87 @@ Foo(int x, int y)
 }
 ```
 
+### Type of Constructor
+
+1. Default Constructor
+2. Non-parameterized Constructor (Also known as Default Constructor)
+
+```CPP
+class Rectangle {
+
+private:
+	int length;
+	int breath;
+public:
+	Rectangle() {
+		length = 0;
+		breath = 0;
+	}
+}
+
+//Default constructor
+Rectangle r()
+```
+
+3. Parameterized Constructor
+
+```CPP
+class Rectangle {
+
+private:
+	int length;
+	int breath;
+public:
+	Rectangle(int l, int b) {
+		length = l;
+		breath = b;
+	}
+}
+//Parameterize constructor
+Rectangle r(12, 10);
+```
+
+```CPP
+class Rectangle {
+
+private:
+	int length;
+	int breath;
+public:
+	Rectangle(int l = 0, int b = 0) {
+		length = l;
+		breath = b;
+	}
+	/*
+	You dont need this if you assign to 0
+	Rectangle() {
+		length = 0;
+		breath = 0;
+	}
+	*/
+}
+//Parameterize constructor
+Rectangle r(12, 10)
+```
+
+4. Copy Constructor
+
+```CPP
+class Rectangle {
+
+private:
+	int length;
+	int breath;
+public:
+	Rectangle(Rectangle &rect) {
+		length = rect.lenght;
+		breath = rect.breath;
+	}
+}
+Rectangle r();
+Rectangle r(10,5);
+//Copy Constructor
+Rectangle r2(r);
+```
 
 ### Encapsulation

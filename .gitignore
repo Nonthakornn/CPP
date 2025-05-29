@@ -9,6 +9,7 @@ test.cpp
 a.out
 *.txt
 *replace
+DSA
 
 # Libraries
 *.lib
