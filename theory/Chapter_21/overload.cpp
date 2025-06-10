@@ -33,15 +33,6 @@ Complex Complex::operator+(Complex x) {
 	return (temp);
 }
 
-Complex Complex::operator+(Complex x) {
-	Complex temp;
-
-	// temp.real = real(a) + x.real;
-	temp.real = real + x.real;
-	// temp.real = real(b) + x.real;
-	temp.img = img + x.img;
-	return (temp);
-}
 void Complex::getdata() {
 	std:: cout << this->real << std::endl;
 	std:: cout << this->img << std::endl;
