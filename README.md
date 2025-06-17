@@ -37,4 +37,12 @@
 - Exercise 00: My First Class in Orthodox Canonical Form 
 - Exercise 01: Towards a more useful fixed-point number class
 - Exercise 02: Now we're talking 
-- Exercise 03: BSP 
+
+## Module 03
+
+- Concept:
+  - Inheritance
+- Exercise 00: Aaaaand... OPEN!
+- Exercise 01: Serena, my love!
+- Exercise 02: Repetitive work
+- Exercise 02: Now it’s weird! 
