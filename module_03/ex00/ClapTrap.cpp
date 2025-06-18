@@ -104,10 +104,6 @@ void ClapTrap::takeDamage(unsigned int amount)
 	std::cout << "(Hit Point " << this->get_hitPoint() << " ==> "; 
 	this->_hitPoint -= amount;
 	std::cout << "" << this->get_hitPoint() << ")" << std::endl;
-
-	std::cout << "(Energy " << this->get_energyPoint() << " ==> "; 
-	this->_energyPoint -= 1;
-	std::cout << "" << this->get_energyPoint() << ")" << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
