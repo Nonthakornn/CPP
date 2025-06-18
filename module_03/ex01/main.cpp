@@ -1,21 +1,35 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 
-/*
-Inherit can access base public function but not private members
-*/
-
 int main() {
 	ScavTrap robot1;
-	ScavTrap robot2("Robot2");
-	ScavTrap robot3("Robot3", 5, 5, 0);
+	ScavTrap robot2("Robot_2");
+	ScavTrap robot3 = robot1;
 
+
+	std::cout << "===== Attack ===== " << std::endl;
+	robot1.attack("other robot");
+	robot2.attack("other robot");
+	robot3.attack("other robot");
+	std::cout << "====================\n" << std::endl;
+
+	std::cout << "===== Take Damage ===== " << std::endl;
 	for (int i = 0; i <= 5; i++)
-	{
-		robot3.takeDamage(1);
-	}
-	std::cout << std::endl;
+		robot1.takeDamage(50);
+	std::cout << "====================\n" << std::endl;
+
+	std::cout << "===== Repair ===== " << std::endl;
+	robot1.beRepaired(20);
+	robot2.beRepaired(20);
+	robot3.beRepaired(20);
+	std::cout << "====================\n" << std::endl;
+
+	std::cout << "===== Gate Check ===== " << std::endl;
 	robot1.guardGate();
-	robot3.guardGate();
+	robot1.guardGate();
+	robot2.guardGate();
+	robot2.guardGate();
+	std::cout << "====================" << std::endl;
+	std::cout << std::endl;
 	return (0);
 }
