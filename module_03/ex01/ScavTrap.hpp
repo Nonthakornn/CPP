@@ -6,7 +6,7 @@
 class ScavTrap: public ClapTrap {
 private:
 	bool _gateStatus;
-private:
+protected:
 public:
 	ScavTrap();
 	ScavTrap(const ScavTrap &copy);
