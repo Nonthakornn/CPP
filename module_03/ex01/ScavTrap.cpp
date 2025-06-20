@@ -50,7 +50,7 @@ ScavTrap:: ScavTrap(std::string name, int hitPoint, int energyPoint, int attackD
 }
 
 ScavTrap::~ScavTrap() {
-	std::cout << "Inherit Destrcutor is called" << std::endl;
+	std::cout << "Scav Trap Destrcutor is called" << std::endl;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap &rhs) {
