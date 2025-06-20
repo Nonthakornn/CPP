@@ -65,7 +65,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &rhs) {
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << "Destructor is called" << std::endl;
+	std::cout << this->_name << " Destructor is called" << std::endl;
 }
 
 //Get-Set

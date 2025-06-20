@@ -1,9 +1,11 @@
 #include "FragTrap.hpp"
 
 FlagTrap::FlagTrap()
-	:ClapTrap()
 {
-	std::cout << " FlagTrap Inherit Default Constructor is called" << std::endl;
+	this->_hitPoint = 100;
+	this->_energyPoint = 100;
+	this->_attackDamage = 30;
+	std::cout << "FlagTrap Inherit Default Constructor is called" << std::endl;
 	std::cout << "Name: " << this->get_name() << std::endl;
 	std::cout << "Hit Point: " << this->get_hitPoint()<< std::endl;
 	std::cout << "Energy Point: " << this->get_energyPoint() << std::endl;
@@ -11,9 +13,10 @@ FlagTrap::FlagTrap()
 	std::cout << std::endl;
 }
 
-FlagTrap::FlagTrap(FlagTrap &copy) {
+FlagTrap::FlagTrap(const FlagTrap &copy) 
+	:ClapTrap(copy)
+{
 	std::cout << "FlagTrap Copy constructor is called" << std::endl;
-	*this = copy;
 }
 
 FlagTrap::FlagTrap(std::string name)
@@ -39,18 +42,19 @@ FlagTrap::FlagTrap(std::string name, int hitPoint, int energyPoint, int attackDa
 }
 
 FlagTrap::~FlagTrap() {
-	std::cout << "FlagTrap Inherit Destrcutor is called" << std::endl;
+	std::cout << "FlagTrap Destrcutor is called" << std::endl;
 }
 
 FlagTrap& FlagTrap::operator=(FlagTrap &rhs) {
 	std::cout << "FlagTrap copy operator is called" << std::endl;
 	if (this != &rhs)
 	{
-		this->get_name() = rhs.get_name();
-
+		this->_name = rhs._name;
+		this->_hitPoint = rhs._hitPoint;
+		this->_energyPoint = rhs._energyPoint;
+		this->_attackDamage = rhs._attackDamage;
 	}
 	return (*this);
-
 }
 
 void FlagTrap::highFivesGuys(void) {

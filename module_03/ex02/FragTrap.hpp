@@ -8,7 +8,7 @@ class FlagTrap: public ClapTrap {
 private:
 public:
 	FlagTrap();
-	FlagTrap(FlagTrap &copy);
+	FlagTrap(const FlagTrap &copy);
 	FlagTrap(std::string name);
 	FlagTrap(std::string name, int hitPoint, int energyPoint, int attackDamage);
 	~FlagTrap();

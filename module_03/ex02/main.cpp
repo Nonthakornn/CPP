@@ -4,33 +4,36 @@
 
 int main() {
 
-	ScavTrap robot1;
-	ScavTrap robot2("Robot_2");
-	ScavTrap robot3 = robot1;
-
+	ClapTrap clapTrap1;
+	ScavTrap scavTrap1;
+	FlagTrap flagTrap1;
 
 	std::cout << "===== Attack ===== " << std::endl;
-	robot1.attack("other robot");
-	robot2.attack("other robot");
-	robot3.attack("other robot");
+	clapTrap1.attack("other robot");
+	scavTrap1.attack("other robor");
+	flagTrap1.attack("other robot");
+
 	std::cout << "====================\n" << std::endl;
 
 	std::cout << "===== Take Damage ===== " << std::endl;
-	for (int i = 0; i <= 5; i++)
-		robot1.takeDamage(50);
+	clapTrap1.takeDamage(100);
+	scavTrap1.takeDamage(50);
+	flagTrap1.takeDamage(50);
+
 	std::cout << "====================\n" << std::endl;
 
 	std::cout << "===== Repair ===== " << std::endl;
-	robot1.beRepaired(20);
-	robot2.beRepaired(20);
-	robot3.beRepaired(20);
+	clapTrap1.beRepaired(10);
+	scavTrap1.beRepaired(20);
+	flagTrap1.beRepaired(30);
 	std::cout << "====================\n" << std::endl;
 
 	std::cout << "===== Gate Check ===== " << std::endl;
-	robot1.guardGate();
-	robot1.guardGate();
-	robot2.guardGate();
-	robot2.guardGate();
+	scavTrap1.guardGate();
+	std::cout << "====================" << std::endl;
+
+	std::cout << "===== High Five===== " << std::endl;
+	flagTrap1.highFivesGuys();
 	std::cout << "====================" << std::endl;
 	std::cout << std::endl;
 	return (0);
