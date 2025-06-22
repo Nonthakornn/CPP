@@ -65,7 +65,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &rhs) {
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << this->_name << " Destructor is called" << std::endl;
+	std::cout << this->_name << " (ClapTrap) Destructor is called" << std::endl;
 }
 
 //Get-Set
@@ -80,7 +80,7 @@ int ClapTrap::get_attackDamage() { return (this->_attackDamage); }
 // Method
 void ClapTrap::attack(const std::string &target)
 {
-	if (this->get_hitPoint() == 0 || this->get_energyPoint() == 0) 
+	if (this->get_hitPoint() <= 0 || this->get_energyPoint() <= 0) 
 	{
 		std::cout << this->get_name() << " has no hitPoint or Energy left: " << std::endl;
 		std::cout << "hitPoint: " << this->get_hitPoint() << " Energy: " << this->get_energyPoint() << std::endl;

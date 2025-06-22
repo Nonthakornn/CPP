@@ -17,12 +17,14 @@ ScavTrap::ScavTrap()
 	std::cout << std::endl;
 }
 ScavTrap::ScavTrap(const ScavTrap &copy)
-	:ClapTrap(copy) //Copy from base class
-	,_gateStatus(copy._gateStatus)
 {
-	std::cout << "Gate Status: " << this->_gateStatus << std::endl;
+	*this = copy;
 	std::cout << "ScavTrap Copy Constructor is called" << std::endl;
-	std::cout << "ALL copying is done! Object is fully constructed with copied values" << std::endl;
+	std::cout << "Name: " << this->_name << std::endl;
+	std::cout << "Hit Point: " << this->_hitPoint << std::endl;
+	std::cout << "Energy Point: " << this->_energyPoint << std::endl;
+	std::cout << "Attack Damage: " << this->_attackDamage<< std::endl;
+	std::cout << "Gate Status: " << this->_gateStatus << std::endl;
 	std::cout << std::endl;
 }
 
@@ -38,6 +40,7 @@ ScavTrap::ScavTrap(std::string name)
 	std::cout << "Attack Damage: " << this->get_attackDamage() << std::endl;
 	std::cout << std::endl;
 }
+
 ScavTrap:: ScavTrap(std::string name, int hitPoint, int energyPoint, int attackDamage)
 	:ClapTrap(name, hitPoint, energyPoint, attackDamage)
 {
@@ -50,7 +53,7 @@ ScavTrap:: ScavTrap(std::string name, int hitPoint, int energyPoint, int attackD
 }
 
 ScavTrap::~ScavTrap() {
-	std::cout << "ScavTrap Destrcutor is called" << std::endl;
+	std::cout << this->_name << " (ScavTrap) Destrcutor is called" << std::endl;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap &rhs) {
@@ -66,8 +69,22 @@ ScavTrap& ScavTrap::operator=(const ScavTrap &rhs) {
 	return (*this);
 }
 
+void ScavTrap::attack(const std::string &target) {
+
+	if (this->get_hitPoint() <= 0 || this->get_energyPoint() <= 0) 
+	{
+		std::cout << this->get_name() << " has no hitPoint or Energy left: " << std::endl;
+		std::cout << "hitPoint: " << this->get_hitPoint() << " Energy: " << this->get_energyPoint() << std::endl;
+		return ;
+	}
+	std::cout << "(Call ScavTrap method) " << this->get_name() << " attacks " << target << ", causing " << this->get_attackDamage() << " points of damage!" << std::endl;
+	std::cout << "(Energy " << this->get_energyPoint() << " ==> "; 
+	this->_energyPoint -= 1;
+	std::cout << "" << this->get_energyPoint() << ")" << std::endl;
+}
+
 void ScavTrap::guardGate() {
-	if (this->get_hitPoint() == 0 || this->get_energyPoint() == 0) 
+	if (this->get_hitPoint() <= 0 || this->get_energyPoint() <= 0) 
 	{
 		std::cout << this->get_name() << " has no hitPoint or Energy left: " << std::endl;
 		std::cout << "hitPoint: " << this->get_hitPoint() << " Energy: " << this->get_energyPoint() << std::endl;

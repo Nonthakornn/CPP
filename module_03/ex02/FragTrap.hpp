@@ -4,16 +4,17 @@
 # include "ClapTrap.hpp"
 # include "ScavTrap.hpp"
 
-class FlagTrap: public ClapTrap {
+class FragTrap: public ClapTrap {
 private:
 public:
-	FlagTrap();
-	FlagTrap(const FlagTrap &copy);
-	FlagTrap(std::string name);
-	FlagTrap(std::string name, int hitPoint, int energyPoint, int attackDamage);
-	~FlagTrap();
+	FragTrap();
+	FragTrap(const FragTrap &copy);
+	FragTrap(std::string name);
+	FragTrap(std::string name, int hitPoint, int energyPoint, int attackDamage);
+	virtual ~FragTrap();
 
-	FlagTrap& operator=(FlagTrap &rhs);
+	FragTrap& operator=(const FragTrap &rhs);
+	void attack(const std::string &target);
 	void highFivesGuys(void);
 };
 
