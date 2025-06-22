@@ -14,10 +14,10 @@ public:
 	ClapTrap();
 	ClapTrap(std::string name);
 	ClapTrap(std::string name, int hitPoint, int energyPoint, int attackDamage);
-	ClapTrap(ClapTrap &other);
+	ClapTrap(const ClapTrap &other);
 	~ClapTrap();
 
-	ClapTrap&	operator=(ClapTrap &rhs);
+	ClapTrap&	operator=(const ClapTrap &rhs);
 	void		attack(const std::string &target);
 	void		takeDamage(unsigned int amount);
 	void		beRepaired(unsigned int amount);
