@@ -50,7 +50,7 @@ ScavTrap:: ScavTrap(std::string name, int hitPoint, int energyPoint, int attackD
 }
 
 ScavTrap::~ScavTrap() {
-	std::cout << "Scav Trap Destrcutor is called" << std::endl;
+	std::cout << this->_name << " (ScavTrap) Destrcutor is called" << std::endl;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap &rhs) {
