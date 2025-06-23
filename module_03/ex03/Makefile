@@ -1,11 +1,11 @@
-NAME = ex02
+NAME = ex03
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
-HEADERS = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
+HEADERS = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp DiamondTrap.hpp
 BUILD_DIR = build
-SRC_FILES = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+SRC_FILES = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 OBJ_FILES = $(SRC_FILES:%.cpp= $(BUILD_DIR)/%.o)
 
 all:			$(NAME)

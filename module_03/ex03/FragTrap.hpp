@@ -4,14 +4,16 @@
 # include "ClapTrap.hpp"
 # include "ScavTrap.hpp"
 
-class FragTrap: public ClapTrap {
+# define ATKFLAG 30
+
+class FragTrap: virtual public ClapTrap {
 private:
 public:
 	FragTrap();
 	FragTrap(const FragTrap &copy);
 	FragTrap(std::string name);
 	FragTrap(std::string name, int hitPoint, int energyPoint, int attackDamage);
-	virtual ~FragTrap();
+	~FragTrap();
 
 	FragTrap& operator=(const FragTrap &rhs);
 	void attack(const std::string &target);

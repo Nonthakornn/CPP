@@ -1,6 +1,7 @@
 #include "FragTrap.hpp"
 
 FragTrap::FragTrap()
+	:ClapTrap()
 {
 	this->_hitPoint = 100;
 	this->_energyPoint = 100;
