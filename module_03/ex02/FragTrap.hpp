@@ -11,7 +11,7 @@ public:
 	FragTrap(const FragTrap &copy);
 	FragTrap(std::string name);
 	FragTrap(std::string name, int hitPoint, int energyPoint, int attackDamage);
-	virtual ~FragTrap();
+	~FragTrap();
 
 	FragTrap& operator=(const FragTrap &rhs);
 	void attack(const std::string &target);

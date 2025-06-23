@@ -16,7 +16,7 @@ public:
 	ClapTrap(std::string name);
 	ClapTrap(std::string name, int hitPoint, int energyPoint, int attackDamage);
 	ClapTrap(const ClapTrap &other);
-	~ClapTrap();
+	virtual ~ClapTrap();
 
 	ClapTrap&	operator=(const ClapTrap &rhs);
 	void		attack(const std::string &target);
