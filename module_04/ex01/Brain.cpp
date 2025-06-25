@@ -5,7 +5,6 @@ Brain::Brain() {
 	for (int i = 0; i < 100; i++)
 	{
 		idea[i]  = "I hate this project";
-		// std::cout <<"[" << i+1 << "] " << idea[i] << std::endl;
 	}
 	idea[42] = "I Love this project";
 }

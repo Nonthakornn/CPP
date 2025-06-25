@@ -4,15 +4,22 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
-int main() {
+void subject_main()
+{
+	const Animal *j = new Dog();
+	const Animal *i = new Cat();
 
+	delete j;
+	delete i;
+}
+
+void test_deep_copy_dog()
+{
 	Dog dog;
 	Dog dog1(dog);
 
-	// Animal animal_arr[4];
-
 	std::cout << std::endl;
-	std::cout << "===== Before Deep Copy =====" << std::endl;
+	std::cout << "===== Before Deep Copy (Dog) =====" << std::endl;
 	std::cout << "Dog: " << dog.getIdea(0) << std::endl;
 	std::cout << "Dog1: " << dog1.getIdea(0) << std::endl;
 	dog.setIdea(0, "eiei");
@@ -22,6 +29,55 @@ int main() {
 	std::cout << "====================" << std::endl;
 
 	std::cout << std::endl;
-	// delete dog;
-	// delete cat;
+}
+
+void test_deep_copy_cat()
+{
+	Cat *cat1 = new Cat();
+	Cat *cat2 = new Cat();
+
+	/*
+	if you set cat2 = cat1
+	It will not  call operator=
+	Both pointers point to same object
+	*/
+
+	*cat2 = *cat1;
+	std::cout << std::endl;
+	std::cout << "===== Before Deep Copy (cat) =====" << std::endl;
+	std::cout << "Cat1: " << cat1->getIdea(0) << std::endl;
+	std::cout << "Cat2: " << cat2->getIdea(0) << std::endl;
+	cat1->setIdea(0, "eiei");
+	std::cout << "===== After Deep Copy ======" << std::endl;
+	std::cout << "Cat1: " << cat1->getIdea(0) << std::endl;
+	std::cout << "Cat2: " << cat2->getIdea(0) << std::endl;
+	std::cout << "====================" << std::endl;
+
+	delete cat1;
+	delete cat2;
+
+	std::cout << std::endl;
+}
+
+void fill_array()
+{
+		Animal* animal_arr[4];
+
+		for (int k = 0; k < 2; k++)
+			animal_arr[k] = new Dog();
+		for (int l = 2; l < 4; l++)
+			animal_arr[l] = new Cat();
+
+		for (int k = 0; k < 2; k++)
+			delete animal_arr[k];
+		for (int l = 2; l < 4; l++)
+			delete animal_arr[l];
+}
+
+int main() {
+	subject_main();
+	test_deep_copy_dog();
+	test_deep_copy_cat();
+	fill_array();
+	return (0);
 }

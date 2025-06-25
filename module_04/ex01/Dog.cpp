@@ -11,7 +11,6 @@ Dog::Dog(const Dog &copy) {
 	this->dog_brain = new Brain();
 }
 
-
 Dog::~Dog() {
 	delete this->dog_brain;
 	std::cout << "Dog Class is deconstructed" << std::endl;
