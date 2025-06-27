@@ -8,19 +8,27 @@ Dog::Dog() {
 
 Dog::Dog(const Dog &copy) {
 	this->type = copy.type;
-	this->dog_brain = new Brain();
+	if (copy.dog_brain)	
+		this->dog_brain = new Brain(*(copy.dog_brain));
+	else
+		this->dog_brain = nullptr;
 }
 
 Dog::~Dog() {
-	delete this->dog_brain;
 	std::cout << "Dog Class is deconstructed" << std::endl;
+	delete this->dog_brain;
 }
 
 Dog& Dog::operator=(const Dog &rhs) {
+	std::cout << "Dog Assignment operator called" << std::endl;
+	if (this == &rhs)
+		return (*this);
 	this->type = rhs.type;
-	if (this->dog_brain)
-		delete (this->dog_brain);
-	this->dog_brain = new Brain();
+	delete this->dog_brain;
+	if (rhs.dog_brain)
+		this->dog_brain = new Brain(*(rhs.dog_brain));
+	else
+		this->dog_brain = nullptr;
 	return (*this);
 }
 

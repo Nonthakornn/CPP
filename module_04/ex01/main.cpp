@@ -17,6 +17,7 @@ void test_deep_copy_dog()
 {
 	Dog dog;
 	Dog dog1(dog);
+	Dog dog2;
 
 	std::cout << std::endl;
 	std::cout << "===== Before Deep Copy (Dog) =====" << std::endl;
@@ -24,9 +25,13 @@ void test_deep_copy_dog()
 	std::cout << "Dog1: " << dog1.getIdea(0) << std::endl;
 	dog.setIdea(0, "eiei");
 	std::cout << "===== After Deep Copy ======" << std::endl;
-	std::cout << "Dog: " << dog.getIdea(0) << std::endl;
+	std::cout << "Dog change to: " << dog.getIdea(0) << std::endl;
 	std::cout << "Dog1: " << dog1.getIdea(0) << std::endl;
 	std::cout << "====================" << std::endl;
+
+	dog2 = dog;
+	std::cout << "dog2 expect to be (eiei): " << dog2.getIdea(0) << std::endl;
+	std::cout << std::endl;
 
 	std::cout << std::endl;
 }
@@ -35,12 +40,7 @@ void test_deep_copy_cat()
 {
 	Cat *cat1 = new Cat();
 	Cat *cat2 = new Cat();
-
-	/*
-	if you set cat2 = cat1
-	It will not  call operator=
-	Both pointers point to same object
-	*/
+	Cat *cat3 = new Cat();
 
 	*cat2 = *cat1;
 	std::cout << std::endl;
@@ -49,12 +49,17 @@ void test_deep_copy_cat()
 	std::cout << "Cat2: " << cat2->getIdea(0) << std::endl;
 	cat1->setIdea(0, "eiei");
 	std::cout << "===== After Deep Copy ======" << std::endl;
-	std::cout << "Cat1: " << cat1->getIdea(0) << std::endl;
+	std::cout << "Cat1 change to : " << cat1->getIdea(0) << std::endl;
 	std::cout << "Cat2: " << cat2->getIdea(0) << std::endl;
 	std::cout << "====================" << std::endl;
 
+	*cat3 = *cat1;
+	std::cout << "Cat3 expect to be (eiei): " << cat3->getIdea(0) << std::endl;
+	std::cout << std::endl;
+
 	delete cat1;
 	delete cat2;
+	delete cat3;
 
 	std::cout << std::endl;
 }

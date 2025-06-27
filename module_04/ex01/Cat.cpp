@@ -8,19 +8,28 @@ Cat::Cat() {
 
 Cat::Cat(const Cat &copy) {
 	this->type = copy.type;
-	this->cat_brain = new Brain();
+	if (copy.cat_brain)
+		this->cat_brain = new Brain(*(copy.cat_brain));
+	else
+		this->cat_brain = nullptr;
 }
 
 Cat::~Cat() {
-	delete this->cat_brain;
 	std::cout << "Cat Class is deconstructed" << std::endl;
+	delete this->cat_brain;
 }
 
 Cat& Cat::operator=(const Cat &rhs) {
+	std::cout << "Cat Assignment operator called" << std::endl;
+	//Self assignment check
+	if (this == &rhs)
+		return (*this);
 	this->type = rhs.type;
-	if (this->cat_brain)
-		delete cat_brain;
-	this->cat_brain = new Brain();
+	delete this->cat_brain;
+	if (rhs.cat_brain)
+		this->cat_brain = new Brain(*(rhs.cat_brain));
+	else
+		this->cat_brain = nullptr;
 	return (*this);
 }
 
