@@ -1,0 +1,4 @@
+#ifndef IMATERIALSOURCE_HPP
+# define IMATERIALSOURCE_HPP
+
+#endif
