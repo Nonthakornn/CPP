@@ -7,11 +7,11 @@ Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name) {
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& rhs):_name(rhs._name), _grade(rhs._grade) {
-	std::cout << "Copy Constructor is called" << std::endl;
+	// std::cout << "Copy Constructor is called" << std::endl;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& rhs) {
-	std::cout << "Copy Assignment is called" << std::endl;
+	// std::cout << "Copy Assignment is called" << std::endl;
 	if (this != &rhs)
 		this->_grade = rhs.getGrade();
 	return (*this);
@@ -47,10 +47,20 @@ void Bureaucrat::decreament() {
 void Bureaucrat::signAForm(AForm &AForm) {
 	try {
 		AForm.beSigned(*this);
-		std::cout << this->getName() << " signed " << AForm.getName();
+		std::cout << this->getName() << " signed " << AForm.getName() << std::endl;
 	}
 	catch(std::exception &e) {
-		std::cout << this->getName () << " couldn't sign" << AForm.getName() << " because " << e.what() << std::endl;
+		std::cout << this->getName () << " couldn't sign " << AForm.getName() << " because " << e.what() << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(AForm const &form) {
+	try {
+		form.execute(*this);
+		std::cout << this->getName() << " execute " << form.getName() << std::endl;
+	}
+	catch (std::exception &e) {
+		std::cout << this->getName() << " cannot execute form because "  << e.what() << std::endl;
 	}
 }
 

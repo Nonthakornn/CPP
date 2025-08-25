@@ -6,7 +6,7 @@ AForm::AForm()
 , _grade_to_sign(150)
 , _grade_to_execute(150)
 {
-	std::cout << "AForm Constructor is called" << std::endl;
+	// std::cout << "AForm Constructor is called" << std::endl;
 }
 
 AForm::AForm(const std::string name, const int grade_to_sign)
@@ -15,7 +15,7 @@ AForm::AForm(const std::string name, const int grade_to_sign)
 ,_grade_to_sign(grade_to_sign)
 ,_grade_to_execute(150)
 {
-	std::cout << "AForm Parameter Constructor is called" << std::endl;
+	// std::cout << "AForm Parameter Constructor is called" << std::endl;
 	if (grade_to_sign > 150)
 		throw GradeTooLowException();
 	else if (grade_to_sign < 1)
@@ -28,7 +28,7 @@ AForm::AForm(const std::string name, const int grade_to_sign, const int grade_to
 ,_grade_to_sign(grade_to_sign)
 ,_grade_to_execute(grade_to_execute)
 {
-	std::cout << "AForm Parameter Constructor is called" << std::endl;
+	// std::cout << "AForm Parameter Constructor is called" << std::endl;
 	if (grade_to_sign > 150 || grade_to_execute > 150)
 		throw GradeTooLowException();
 	else if (grade_to_sign < 1 || grade_to_execute < 1)
@@ -40,17 +40,19 @@ AForm::AForm(const AForm& rhs)
 ,_isSigned(rhs._isSigned)
 ,_grade_to_sign(rhs._grade_to_sign)
 ,_grade_to_execute(rhs._grade_to_execute)
-{ std::cout << "Copy Constructor is called" << std::endl; }
+{
+	// std::cout << "Copy Constructor is called" << std::endl;
+}
 
 AForm& AForm::operator=(const AForm& rhs) {
-	std::cout << "Copy Assigment operator called" << std::endl;
+	// std::cout << "Copy Assigment operator called" << std::endl;
 	if (this != &rhs)
 		this->_isSigned = rhs._isSigned;
 	return (*this);
 }
 
 AForm::~AForm() {
-	std::cout << "AForm has beed destroyed" << std::endl;
+	// std::cout << "AForm has beed destroyed" << std::endl;
 }
 
 std::string AForm::getName() const {
@@ -76,6 +78,22 @@ void AForm::beSigned(const Bureaucrat &bureaucrat) {
 		throw GradeTooLowException();
 }
 
+void AForm::execute(Bureaucrat const &executor) const {
+	if (!(this->getIsSigned()))
+		throw NotSignedException();
+	if (executor.getGrade() > this->getExecuteGrade())
+		throw GradeTooLowToExecuteException();
+	this->performAction();
+
+	// If I catch here error with opening file with still get execute cat it on executeForm
+	// try {
+	// 	this->performAction();
+	// }
+	// catch(std::exception &e) {
+	// 	std::cout << "Exception Caught:" << e.what() << std::endl;
+	// }
+}
+
 const char* AForm::GradeTooHighException::what() const throw() {
 	return ("AForm Grade Too High");
 }
@@ -84,8 +102,16 @@ const char* AForm::GradeTooLowException::what() const throw() {
 	return ("AForm Grade Too Low");
 }
 
+const char* AForm::NotSignedException::what() const throw() {
+	return ("Form is not Signed and cannot be execute");
+}
+
+const char* AForm::GradeTooLowToExecuteException::what() const throw() {
+	return ("Grade Too Low to execute");
+}
+
 std::ostream& operator<<(std::ostream& out, const AForm& AForm) {
-	out << "Name: " << AForm.getName() << "\n"
+	out << "Form Name: " << AForm.getName() << "\n"
 	<< "Is Signed: " << AForm.getIsSigned() << "\n"
 	<< "Grade to Signed: " << AForm.getSignGrade() << "\n"
 	<< "Grade to Execute: " << AForm.getExecuteGrade();

@@ -25,6 +25,7 @@ $(BUILD_DIR):
 
 clean:
 				$(RM) $(BUILD_DIR)
+				$(RM) *.txt
 
 fclean:			clean
 				$(RM) $(NAME)
