@@ -1,96 +1,94 @@
 #include "Bureaucrat.hpp"
 
-void test_parameter_constructor();
+void test_parameter_and_copy_constructor();
 void test_grade_too_low();
 void test_grade_too_high();
-void test_decrease();
-void test_increase();
+void test_decrease_fail();
+void test_decrease_success();
+void test_increase_fail();
+void test_increase_success();
 
 int main() {
-	test_parameter_constructor();
+	test_parameter_and_copy_constructor();
 	test_grade_too_low();
 	test_grade_too_high();
-	test_decrease();
-	test_increase();
+	test_decrease_fail();
+	test_decrease_success();
+	test_increase_fail();
+	test_increase_success();
 	return (0);
 }
 
-void test_increase() {
+void test_parameter_and_copy_constructor() {
+	Bureaucrat b0;
+	std::cout << b0 << std::endl;
 
-	Bureaucrat t0("t0", 5);
-	std::cout << "Before Decrease: " << t0 << std::endl;
-
-	try
-	{
-		for (int i = 0; i < 5; i++)
-			t0.increment_grade();
-		std::cout << "After Decrease: " << t0 << std::endl;
-	}
-	catch (Bureaucrat::GradeTooHighException &e)
-	{
-		std::cout << "Error cannot increment from grade: " << t0.getGrade() << " - " << e.what() << std::endl;
-	}
-
+	Bureaucrat b1("b1", 120);
+	Bureaucrat b2(b1);
+	std::cout << b2 << std::endl;
 }
 
-void test_decrease()
-{
-	Bureaucrat t1;
-	std::cout << "Before Decrease: " << t1 << std::endl;
-
-	try
-	{
-		t1.decrement_grade();
-		std::cout << "After Decrease: " << t1 << std::endl;
-	}
-	catch (Bureaucrat::GradeTooLowException &e)
-	{
-		std::cout << "Error cannot decrement from grade: " << t1.getGrade() << " - " << e.what() << std::endl;
-	}
-}
-
-void test_grade_too_low()
-{
-	Bureaucrat *p1 = NULL;
-
-	try
-	{
-		p1 = new Bureaucrat("p1", 1200);
-		std::cout << *p1 << std::endl;
-	}
-	catch (Bureaucrat::GradeTooLowException &e)
-	{
-		/* e is just a variable that holds the exception object that was thrown */
-		std::cerr << "Error: " << e.what() << std::endl;
-	}
-	if (p1)
-		delete p1;
-}
-
-void test_grade_too_high()
-{
+void test_grade_too_low() {
 	try {
-		Bureaucrat p2("p2", -1);
-		std::cout << p2 << std::endl;
+		Bureaucrat b3("b3", 153);
 	}
-	catch(Bureaucrat::GradeTooHighException &e) {
-		std::cout << "Error: " << e.what() << std::endl;
+	catch (std::exception &e){
+		std::cerr << e.what() << std::endl;
 	}
 }
 
-void test_parameter_constructor()
-{
+void test_grade_too_high() {
 	try {
-		Bureaucrat p0("p0", -1);
-		// Bureaucrat p1("p0", 190);
-		std::cout << p0 << std::endl;
+		Bureaucrat b4("b4", 0);
 	}
-	catch(Bureaucrat::GradeTooHighException &e) {
-		std::cout << "Error: " << e.what() << std::endl;
+	catch (std::exception &e){
+		std::cerr << e.what() << std::endl;
 	}
-	catch(Bureaucrat::GradeTooLowException &e)
-	{
-		std::cout << "Error: " << e.what() << std::endl;
-	}
+}
 
+
+void test_decrease_fail() {
+	try {
+		Bureaucrat b5("b5", 150);
+		b5.decreament();
+		//Should not print anything
+		std::cout << b5 << std::endl;
+	}
+	catch (std::exception &e){
+		std::cerr << e.what() << std::endl;
+	}
+}
+
+
+void test_decrease_success() {
+	try {
+		Bureaucrat b6("b6", 149);
+		b6.decreament();
+		std::cout << b6 << std::endl;
+	}
+	catch (std::exception &e){
+		std::cerr << e.what() << std::endl;
+	}
+}
+
+void test_increase_fail() {
+	try {
+		Bureaucrat b7("b7", 1);
+		b7.increment();
+		std::cout << b7 << std::endl;
+	}
+	catch (std::exception &e){
+		std::cerr << e.what() << std::endl;
+	}
+}
+
+void test_increase_success() {
+	try {
+		Bureaucrat b8("b8", 12);
+		b8.increment();
+		std::cout << b8 << std::endl;
+	}
+	catch (std::exception &e){
+		std::cerr << e.what() << std::endl;
+	}
 }
