@@ -3,126 +3,77 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
-void signed_execute_ShrubberyForm();
-void signed_notExecute_ShrubberyForm();
-void notSigned_notExecute_ShrubberyForm();
-void test_robotomy();
-void signed_execute_Presidential();
-void notSigned_notExecute_Presidential();
+void sign_presidentail_form();
+void sign_shrubbery_form();
+void sign_robotomy_form();
+void error_createform();
 
 int main()
 {
-	/* TESTING ShruberryForm */
-
-	signed_execute_ShrubberyForm();
-	signed_notExecute_ShrubberyForm();
-	notSigned_notExecute_ShrubberyForm();
-
-	/* TESTING RobotomyRequestForm*/
-	test_robotomy();
-	
-	/* TESTING PresidentialPardonForm */
-	signed_execute_Presidential();
-	notSigned_notExecute_Presidential();
-
+	sign_presidentail_form();
+	sign_shrubbery_form();
+	sign_robotomy_form();
+	error_createform();
 }
-
-void signed_notExecute_ShrubberyForm() {
-	//Require Grade sign 145, exec 137
-	AForm *form = 0;
-	try 
-	{
-		Bureaucrat b1("b1", 142);
-		AForm *form = new ShrubberyCreationForm;
-
-		std::cout << b1 << std::endl;
-		std::cout << *form << std::endl;
-		b1.signAForm(*form);
-		b1.executeForm(*form);
-	}
-	catch(std::exception &e) {
-		std::cout << "Exception caught: " << e.what() << std::endl;
-	}
-	delete form;
-}
-
-void signed_execute_ShrubberyForm() {
-	AForm *form = 0;
-	try 
-	{
-		Bureaucrat b1("b1", 100);
-		AForm *form = new ShrubberyCreationForm;
-
-		std::cout << b1 << std::endl;
-		std::cout << *form << std::endl;
-		b1.signAForm(*form);
-		b1.executeForm(*form);
-	}
-	catch(std::exception &e) {
-		std::cout << "Exception caught: " << e.what() << std::endl;
-	}
-	delete form;
-}
-
-void notSigned_notExecute_ShrubberyForm() {
-	AForm *form = 0;
-	try 
-	{
-		Bureaucrat b1("b1", 150);
-		AForm *form = new ShrubberyCreationForm;
-		std::cout << b1 << std::endl;
-		std::cout << *form << std::endl;
-		b1.signAForm(*form);
-		b1.executeForm(*form);
-	}
-	catch(std::exception &e) {
-		std::cout << "Exception caught: " << e.what() << std::endl;
-	}
-	delete form;
-}
-
-
-void test_robotomy() {
+void sign_presidentail_form() {
+	Bureaucrat bob("Bob",2);
+	Intern someRandomIntern;
+	AForm* rrf = 0;
 	try {
-		srand(time(0));
-		Bureaucrat b("Mr Robot", 40);
-		RobotomyRequestForm robotForm("Bender");
-
-		std::cout << b << std::endl;
-		std::cout << robotForm << std::endl;
-		b.signAForm(robotForm);
-		b.executeForm(robotForm);
-		b.executeForm(robotForm);
-		b.executeForm(robotForm);
+		rrf = someRandomIntern.makeForm("Presidential request", "Presidential Form");
+		bob.signAForm(*rrf);
+	}	
+	catch(std::exception &e) {
+		std::cout << e.what() << std::endl;
 	}
-	catch (const std::exception &e) {
-		std::cout << "Exception caught: " << e.what() << std::endl;
-	}
+	delete rrf;
 }
 
-void signed_execute_Presidential() {
+void sign_shrubbery_form() {
+	Bureaucrat mike("Mike",2);
+	Intern someRandomIntern;
+	AForm* rrf = 0;
 	try {
-		Bureaucrat b3("b3", 3);
-		PresidentialPardonForm p("p-form");
-		b3.signAForm(p);
-		b3.executeForm(p);
+		rrf = someRandomIntern.makeForm("Shrubberry request", "Shrubberry Form");
+		mike.signAForm(*rrf);
+		mike.executeForm(*rrf);
+	}	
+	catch(std::exception &e) {
+		std::cout << e.what() << std::endl;
 	}
-	catch (const std::exception &e) {
-		std::cout << "Exception caught: " << e.what() << std::endl;
-	}
+	delete rrf;
+
 }
 
-
-void notSigned_notExecute_Presidential() {
+void sign_robotomy_form() {
+	Bureaucrat john("John",2);
+	Intern someRandomIntern;
+	AForm* rrf = 0;
+	srand(time(0));
 	try {
-		Bureaucrat b3("b3", 123);
-		PresidentialPardonForm p("p-form");
-		b3.signAForm(p);
-		b3.executeForm(p);
+		rrf = someRandomIntern.makeForm("Robotomy request", "Robotomy Form");
+		john.signAForm(*rrf);
+		john.executeForm(*rrf);
+	}	
+	catch(std::exception &e) {
+		std::cout << e.what() << std::endl;
 	}
-	catch (const std::exception &e) {
-		std::cout << "Exception caught: " << e.what() << std::endl;
+	delete rrf;
+}
+void error_createform() {
+	Bureaucrat jack("Jack",2);
+	Intern someRandomIntern;
+	AForm* rrf = 0;
+	srand(time(0));
+	try {
+		rrf = someRandomIntern.makeForm("Shubb request", "??? Form");
+		jack.signAForm(*rrf);
+		jack.executeForm(*rrf);
+	}	
+	catch(std::exception &e) {
+		std::cout << e.what() << std::endl;
 	}
-
+	delete rrf;
 }

@@ -4,11 +4,13 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 HEADERS = Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp \
-			RobotomyRequestForm.hpp PresidentialPardonForm.hpp
+			RobotomyRequestForm.hpp PresidentialPardonForm.hpp \
+			Intern.hpp
+
 BUILD_DIR = build
 SRC_FILES = main.cpp Bureaucrat.cpp AForm.cpp \
 			ShrubberyCreationForm.cpp RobotomyRequestForm.cpp\
-			PresidentialPardonForm.cpp
+			PresidentialPardonForm.cpp Intern.cpp
 
 OBJ_FILES = $(SRC_FILES:%.cpp= $(BUILD_DIR)/%.o)
 
