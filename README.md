@@ -56,3 +56,20 @@
 - Exercise 00: Polymorphism
 - Exercise 01: I don't want to set the world on fire
 - Exercise 02: Abstract class
+
+## Module 05
+
+- Concept:
+  - Repetition and Exceptions
+- Exercise 00: Mommy, when I grow up, I want to be a bureaucrat!
+- Exercise 01: Form up, maggots!
+- Exercise 02: No, you need form 28B, not 28C...
+- Exercise 03: At least this beats coffee-making
+
+## Module 06
+
+- Concept:
+  - Casts
+- Exercise 00: Conversion of scalar types
+- Exercise 01: Serialization
+- Exercise 02: Identify real type
