@@ -1,9 +1,9 @@
-NAME = ex00
+NAME = ex01
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
-HEADERS = Whatever.hpp 
+HEADERS = iter.hpp 
 
 BUILD_DIR = build
 SRC_FILES = main.cpp
