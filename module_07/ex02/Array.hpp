@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <typeinfo>
-
+#include <exception>
 template<typename T>
 
 class Array {
@@ -25,12 +25,12 @@ public:
 	}
 	
 	Array(const Array& rhs)
-	:_size(rhs._size)
+		:a(new T[rhs._size]) 
+		,_size(rhs._size)
 	{
 		// Direct Implementation (I used this implementation)
 		// Delegating Implementation
-		std::cout << "Copy Constructor called." << std::endl;
-		a = new T[_size];
+		std::cout << "Copy Constructor called" << std::endl;
 		for (unsigned int i = 0; i < this->_size; i++)
 			this->a[i] = rhs.a[i];
 	}
@@ -49,12 +49,40 @@ public:
 		return (*this);
 	}
 
+	T& operator[] (unsigned int index)
+	{
+		if (index >= this->size() || !(this->a))
+			throw InvalidException();
+		return (a[index]);
+	}
+
+	void setIndex(unsigned int index, T data)
+	{
+		if (index >= this->size() || !(this->a))
+			throw InvalidException();
+		this->a[index] = data;
+	}
+
+	void print() {
+		for (unsigned int i = 0; i < this->size(); i++)
+			std::cout << this->a[i] << std::endl;
+	}
+
 	~Array() {
 		if (a != NULL)
 			delete[] a;
 	}
 
-	int size() const { return (this->_size); };
+	unsigned int size() const {
+		return (this->_size); 
+	};
+
+	class InvalidException: public std::exception {
+	public:
+		virtual const char *what() const throw() {
+			return ("Index out of bounds");
+		}
+	};
 };
 
 # endif
