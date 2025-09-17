@@ -27,6 +27,7 @@ int main()
   - Down Casting is a pointer of a base class to pointer of derived class.
 - It check at run time to see if the conversion is actually valid. If you try to cast a base class pointer to derived class pointer, but the object is not actually of the derived type `dynamic_cast` will return `nullptr` or thorw an exception (for reference)
   - This prevent you from accidentally using a pointer tha points to the wrong type of object.
+- You can't use dynamic_cast to change a Base into a Derived. You can only use it to "uncover" or "reveal" that a Base pointer is already pointing to a Derived object.
 
 ```C++
 #include <iostream>
@@ -41,11 +42,24 @@ class Dog: public Animal {};
 
 int main()
 {
-	Animal *myAnimal = new Dog();
-	Dog *myDog = dynamic_cast<Dog*>(myAnimal);
+	{
+		Base * b = new Base();
+		Derived *d = new Derived();
 
-	if (myDog)
-		std::cout << "Success Casting" << std::endl;
+		// Base->Derived
+		// This one is invalid
+		if (dynamic_cast<Derived*>(b)) {
+			std::cout << "Treating 'b' like Derived" << std::endl;
+		}
+	}
+
+	{
+		Animal *myAnimal = new Dog();
+		Dog *myDog = dynamic_cast<Dog*>(myAnimal);
+
+		if (myDog)
+			std::cout << "Success Casting" << std::endl;
+	}
 }
 ```
 
