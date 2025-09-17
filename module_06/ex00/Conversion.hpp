@@ -16,6 +16,7 @@ private:
 	~ScalarConverter(void);
 
 public:
+	// Need to make it static so that we dont need initiate class to call this function
 	static void convert(const std::string &str);
 };
 
