@@ -1,26 +1,19 @@
 #include "Span.hpp"
 
 Span::Span():_N(0)
-{
-	// std::cout << "Default Constructor is called" << std::endl;
-};
+{};
 
 Span::Span(unsigned int N)
 	:_N(N)
-{
-	// std::cout << "Parameter Constructor is called" << std::endl;
-};
+{};
 
 Span::Span(const Span& rhs)
 	:_N(rhs._N)
 	,_vec(rhs._vec)
-{
-	// std::cout << "Copy Constructor is called" << std::endl;
-};
+{};
 
 
 Span& Span::operator=(const Span& rhs) {
-	// std::cout << "Copy Assignment is called" << std::endl;
 	if (this != &rhs)
 	{
 		this->_N = rhs._N;
@@ -29,9 +22,7 @@ Span& Span::operator=(const Span& rhs) {
 	return (*this);
 };
 
-Span::~Span() {
-	// std::cout << "Destructor is called" << std::endl;
-};
+Span::~Span() {};
 
 void Span::addNumber(int num)
 {
@@ -53,6 +44,9 @@ int Span::shortestSpan() {
 	int result = INT_MAX;
 	std::vector<int> vec = this->_vec;
 
+	if (vec.size() <= 1)
+		throw(std::length_error("Error: Cannot find shortest span because the vector size is 1"));
+
 	std::sort(vec.begin(), vec.end());
 	for (size_t r = 1; r < vec.size(); r++)
 	{
@@ -61,4 +55,12 @@ int Span::shortestSpan() {
 		l++;
 	}
 	return (result);
+}
+
+int Span::longestSpan() {
+	std::vector<int> vec = this->_vec;
+	if (vec.size() <= 1)
+		throw(std::length_error("Error: Cannot find longest span because the vector size is 1"));
+	std::sort(vec.begin(), vec.end());
+	return (vec.back() - vec.front());
 }

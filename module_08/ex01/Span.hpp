@@ -3,8 +3,11 @@
 # include <iostream>
 # include <algorithm>
 # include <vector>
+# include <list>
 # include <stdexcept>
 # include <limits>
+# include <cstdlib>   // rand()
+# include <ctime>     // time()
 
 class Span {
 private:
@@ -19,10 +22,17 @@ public:
 	~Span();
 
 	void addNumber(int num);
+	template <typename InputIterator>
+	void addNumber(InputIterator first, InputIterator last) {
+        if (std::distance(first, last) + _vec.size() > _N) {
+            throw std::length_error("Container does not have enough space!");
+        }
+		// void insert (iterator position, InputIterator first, InputIterator last);
+        _vec.insert(_vec.end(), first, last);
+    }
 	int shortestSpan();
 	int longestSpan();
 	void displayVector();
-
 };
 
 #endif
