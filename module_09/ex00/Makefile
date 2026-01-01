@@ -3,10 +3,10 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
-HEADERS = 
+HEADERS = BitcoinExchange.hpp
 
 BUILD_DIR = build
-SRC_FILES = main.cpp
+SRC_FILES = main.cpp BitcoinExchange.cpp
 
 OBJ_FILES = $(SRC_FILES:%.cpp= $(BUILD_DIR)/%.o)
 
