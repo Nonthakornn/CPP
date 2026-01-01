@@ -7,7 +7,6 @@ test.cpp
 *.so
 *.a
 a.out
-*.txt
 *replace
 DSA
 build
@@ -24,3 +23,5 @@ build
 *.x86_64
 *.hex
 .DS_Store
+*.pdf
+btc
